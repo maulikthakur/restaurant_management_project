@@ -1,37 +1,26 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Product
-from .serializers import ProductSerializer
-
-class ProductListAPIView(APIView):
-    def get(self, request):
-        products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
-
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-class HardcodedMenuAPIView(APIView):
+from .models import Item
+from .serializers import ItemSerializer
+
+'''
+NOTE: Conside this as a reference and follow this same coding structure or format to work on you tasks
+'''
+
+# Create your views here.
+class ItemView(APIView):
+
     def get(self, request):
-        menu = [
-            {
-                "name": "Margherita Pizza",
-                "description": "Classic pizza with tomato sauce and mozzarella cheese",
-                "price": 249.00
-            },
-            {
-                "name": "Paneer Tikka",
-                "description": "Grilled paneer cubes with spicy marinade",
-                "price": 199.00
-            },
-            {
-                "name": "Masala Dosa",
-                "description": "Crispy dosa filled with spiced mashed potatoes",
-                "price": 129.00
-            }
-        ]
-        return Response(menu, status=status.HTTP_200_OK)
+        items = Item.objects.all()
+        serializer = ItemSerializer(items, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+    def post(self, request):
+        serializer = ItemSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
