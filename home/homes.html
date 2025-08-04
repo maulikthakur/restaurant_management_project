@@ -19,6 +19,15 @@
     <div id="menu-container">
         <p>Loading menu...</p>
     </div>
+
+    <hr>
+    <h2>Contact Us</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
                                                                                                                                         
     <script>
         fetch("/products/api/menu/")
@@ -47,4 +56,5 @@
                                                                                                                                                                                                                                                       
 
                                                                                                                                                                                                                                                                     
+
                                                                                                                              
