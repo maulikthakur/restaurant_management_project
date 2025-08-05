@@ -24,10 +24,11 @@
 
     <hr>
     <h2>Visit Us</h2>
-    <p><strong>Address:</strong> near Babariya Lake Road, Seoni, Madhya Pradesh 480661</p>
+    <p><strong>Address:</strong> {{ restaurant_address }}</p>
 
     <!-- Google Maps Embed -->
-    <iframe src="https://maps.app.goo.gl/oNGcyjcj79MrSzq79>
+    <iframe>
+        src="https://maps.app.goo.gl/oNGcyjcj79MrSzq79 
         width="100%"
         height="300"
         style="border:0;"
@@ -35,6 +36,15 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
     </iframe>
+
+    <hr>
+    <h2>Contact Us</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
 
                                                                                                                                         
     <script>
@@ -64,5 +74,4 @@
                                                                                                                                                                                                                                                       
 
                                                                                                                                                                                                                                                                     
-
                                                                                                                              
