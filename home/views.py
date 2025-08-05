@@ -22,7 +22,7 @@ def home(request):
         'restaurant_address': restaurant.address if restaurant and restaurant.address else 'Near Babariya Lake Road, Seoni, Madhya Pradesh (480661)'   
     }
 
-    return render(request, 'homes.html', context)
+    return render(request,'homes.html', context)
 
 
 
