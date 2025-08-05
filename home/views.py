@@ -11,14 +11,18 @@ def home(request):
         if form.is_valid():
             form.save()
             return redirect('home')
-        else:
-            form = ContactForm()
+    else:
+        form = ContactForm()
 
-        context = {
-            'form': form,
-            'restaurant_name': settings.restaurant_name    
-        }
+    restaurant = RestaurantInfo.objects.first()    
+
+    context = {
+        'form': form,
+        'restaurant_name': settings.restaurant_name,
+        'restaurant_address': restaurant.address if restaurant and restaurant.address else 'Near Babariya Lake Road, Seoni, Madhya Pradesh (480661)'   
+    }
+
     return render(request, 'homes.html', context)
 
-                                                                                }
+
 
