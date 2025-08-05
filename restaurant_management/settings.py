@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+RESTAURANT_NAME = 'Tasty Bites Restaurant'
+
 
 # Application definition
 
