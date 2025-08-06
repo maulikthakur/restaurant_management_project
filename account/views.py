@@ -3,9 +3,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from decimal import Decimal
-
+from django.shortcuts import render
+from .models import RestaurantInfo
 # Your existing Category and MenuItem models stay here...
-
+def homepage(request):
+    restaurant_info = RestaurantInfo.objects.first()  # assuming one record only
+    return render(request, 'account/homepage.html', {'restaurant_info': restaurant_info})
+    
 class Order(models.Model):
     ORDER_STATUS_CHOICES = [
         ('pending', 'Pending'),
@@ -34,5 +38,6 @@ class Order(models.Model):
     
     def calculate_total(self):
         """Calculate total
+
 
 
