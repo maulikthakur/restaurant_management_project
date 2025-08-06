@@ -7,5 +7,14 @@ class UserProfile(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
 
+class RestaurantInfo(models.Model):
+    name = models.CharField(max_length=200)
+    address = models.TextField()
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=10)
+    
+
     def __str__(self):
         return self.name
+
