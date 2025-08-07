@@ -14,8 +14,6 @@ def home(request):
     return render(request, 'account/homes.html', {'restaurant': restaurant})
 
 
-
-
 def contact_view(request):    
     if request.method == 'POST':        
         form = ContactForm(request.POST)        
