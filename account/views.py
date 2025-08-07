@@ -5,10 +5,16 @@ from django.core.validators import MinValueValidator
 from decimal import Decimal
 from django.core.mail import send_mail
 from django.conf import settings
-# Your existing Category and MenuItem models stay here...
+from django.shortcuts import render
+from .models import Restaurant
 
-from django.core.mail import send_mail
-from django.conf import settings
+
+def home(request):    
+    restaurant = Restaurant.objects.first()    
+    return render(request, 'account/homes.html', {'restaurant': restaurant})
+
+
+
 
 def contact_view(request):    
     if request.method == 'POST':        
