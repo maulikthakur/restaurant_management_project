@@ -3,13 +3,33 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from decimal import Decimal
-from django.shortcuts import render
-from .models import RestaurantInfo
+from django.core.mail import send_mail
+from django.conf import settings
 # Your existing Category and MenuItem models stay here...
-def homepage(request):
-    restaurant_info = RestaurantInfo.objects.first()  # assuming one record only
-    return render(request, 'account/homepage.html', {'restaurant_info': restaurant_info})
-    
+
+from django.core.mail import send_mail
+from django.conf import settings
+
+def contact_view(request):    
+    if request.method == 'POST':        
+        form = ContactForm(request.POST)        
+        if form.is_valid():            
+            contact = form.save()           
+            
+            # Send email            
+            subject = 'New Contact Form Submission'            
+            message = f"Name: {contact.name}\nEmail: {contact.email}"           
+            recipient = 'restaurant@example.com'  # Replace with actual restaurant email   
+
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [recipient]) 
+
+            return redirect('contact_success')    
+    else:        
+        form = ContactForm()    
+    return render(request, 'account/contact.html', {'form': form})"
+
+
+
 class Order(models.Model):
     ORDER_STATUS_CHOICES = [
         ('pending', 'Pending'),
@@ -39,5 +59,6 @@ class Order(models.Model):
     def calculate_total(self):
         """Calculate total
 
+    
 
 
