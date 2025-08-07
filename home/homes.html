@@ -36,7 +36,14 @@
 
     <hr>
     <h2>Visit Us</h2>
-    <p><strong>Address:</strong> {{ restaurant_address }}</p>
+    <h2>{{ restaurant.name }}</h2>
+    <p><strong>Address:</strong> {{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.state }} - {{ restaurant.zip_code }}</p>
+    <h3>Opening Hours</h3>
+    <ul>    
+        {% for day, hours in restaurant.opening_hours.items %}        
+            <li><strong>{{ day }}:</strong> {{ hours }}</li>    
+        {% endfor %}
+    </ul>
 
     <!-- Google Maps Embed -->
     <iframe>
