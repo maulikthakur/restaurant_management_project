@@ -5,8 +5,10 @@ from django.db import models
 
 class Restaurant(models.Model):    
     name = models.CharField(max_length=255)    
-    address = models.TextField()    city = models.CharField(max_length=100)    
-    state = models.CharField(max_length=100)    zip_code = models.CharField(max_length=10)    
+    address = models.TextField()    
+    city = models.CharField(max_length=100)    
+    state = models.CharField(max_length=100)    
+    zip_code = models.CharField(max_length=10)    
     
     
     # Add opening_hours as a JSON field (requires PostgreSQL or Django 3.1+)    
