@@ -28,3 +28,15 @@ class ItemView(APIView):
 def menu_view(request):
     items = MenuItem.objects.all()
     return render(request,'products/menu.html',{'menu_items': items})
+
+def home_page(request):
+    query = request.GET.get('q')    
+    if query:
+        menu_items = MenuItem.objects.filter(name__icontains=query)    
+    else:        
+        menu_items = MenuItem.objects.all()        
+        
+    return render(request, 'products/homepage.html', {        
+        'menu_items': menu_items,        
+        'query': query or ''    
+    })
