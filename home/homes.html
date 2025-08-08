@@ -12,11 +12,32 @@
                 border-bottom: 1px solid #ddd;
                 padding: 1rem 0;
                }
+
+        form {        
+            margin-bottom: 20px;    
+            }    
+        input[type="text"] {        
+                        padding: 8px;        
+                        width: 200px;    
+        }    
+        button {        
+                padding: 8px 12px;    
+        }    
+        img {        
+            border-radius: 8px;        
+            margin-top: 10px;    
+        }
         </style>
 </head>
 <body>
     <h1>Welcome to Tasty Bites Restaurant</h1>                                                                                                                 
     <h1>Restaurant Menu</h1>
+
+    <form method="get" action="">    
+        <input type="text" name="q" placeholder="Search menu..." value="{{ query }}">    
+        <button type="submit">Search</button>
+    </form>
+
     <div class="menu-container">
       {% for item in menu_items %}
         <div class="menu-item">
