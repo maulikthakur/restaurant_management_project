@@ -143,7 +143,11 @@
         {% csrf_token %}        
         {{ form.as_p }}        
         <button type="submit" class="btn btn-success">Submit</button>    
-    </form>    
+    </form>  
+
+    <nav>    
+        <a href="{% url 'about' %}">About Us</a>
+    </nav>  
     
     <!-- Bootstrap JS -->    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
