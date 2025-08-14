@@ -24,5 +24,16 @@ def home(request):
 
     return render(request,'homes.html', context)
 
+# views.py
+from django.shortcuts import render
+
+def contact_us(request):
+    contact_info = {
+        "phone": "+91 9876543210",
+        "email": "info@restaurant.com",
+        "address": "Babariya Near Babariya Lake Road, Seoni, Madhya Pradesh (480661)"
+    }
+    return render(request, "contact_us.html", {"contact_info": contact_info})
+
 
 
