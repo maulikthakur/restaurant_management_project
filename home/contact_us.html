@@ -1,34 +1,34 @@
 <!-- contact_us.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #d35400;
-        }
-        .contact-box {
-            background: white;
-            padding: 20px;
-            margin: auto;
-            width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+<head>    
+    <title>Contact Us</title>    
+    <style>        
+        body {            
+            font-family: Arial, sans-serif;            
+            background-color: #fafafa;            
+            padding: 20px;            
+            text-align: center;        
+        }        
+        h1 {            
+            color: #d35400;        
+        }        
+        .contact-box {            
+            background: white;            
+            padding: 20px;            
+            margin: auto;            
+            width: 300px;            
+            border-radius: 8px;            
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);        
+        }    
     </style>
 </head>
-<body>
-    <h1>Contact Us</h1>
-    <div class="contact-box">
-        <p><strong>Phone:</strong> {{ contact_info.phone }}</p>
-        <p><strong>Email:</strong> {{ contact_info.email }}</p>
-        <p><strong>Address:</strong> {{ contact_info.address }}</p>
+<body>    
+    <h1>Contact Us</h1>    
+    <div class="contact-box">        
+        <p><strong>Phone:</strong> {{ contact_info.phone }}</p>        
+        <p><strong>Email:</strong> {{ contact_info.email }}</p>        
+        <p><strong>Address:</strong> {{ contact_info.address }}</p>    
     </div>
 </body>
 </html>
