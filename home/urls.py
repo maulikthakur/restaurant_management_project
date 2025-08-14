@@ -11,4 +11,6 @@ handler404 = custom_404
 urlpatterns = [
     path('',home, name ='home'),
     path('about/', views.about, name='about'),
+    path('contact/', views.contact_us, name='contact_us')
+
 ]
