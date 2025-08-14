@@ -28,6 +28,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 RESTAURANT_NAME = 'Tasty Bites Restaurant'
+RESTAURANT_PHONE = "+91-9876543210"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
