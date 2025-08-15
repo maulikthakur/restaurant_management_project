@@ -25,7 +25,8 @@ def home(request):
 
     return render(request,'homes.html', context)
 
-
+def reservations(request):    
+    return render(request, 'reservations.html')
 
 
 
