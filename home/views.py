@@ -26,7 +26,24 @@ def home(request):
     return render(request,'homes.html', context)
 
 def reservations(request):    
-    return render(request, 'reservations.html')
+    try:        
+        # For now, just a placeholder (later this could be a DB query)        
+        message = "Reservations feature coming soon!"                
+        # Example of future DB logic (wrapped in try)        
+        # reservations = Reservation.objects.all()        
+        # return render(request, "reservations/list.html", {"reservations": reservations})        
+        
+        return render(request, "reservations/reservations.html", {"message": message})    
+
+    except DatabaseError:        
+        # Handle DB-related issues gracefully        
+        error_message = "Sorry, were having trouble fetching reservations right now. Please try again later."       
+        return render(request, "reservations/reservations.html", {"error": error_message})    
+        
+    except Exception as e:        
+        # Catch-all for unexpected errors        
+        error_message = f"An unexpected error occurred: {str(e)}"        
+        return render(request, "reservations/reservations.html", {"error": error_message})
 
 
 
