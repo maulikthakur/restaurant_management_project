@@ -26,9 +26,31 @@
 <body>    
     <h1>Contact Us</h1>    
     <div class="contact-box">        
-        <p><strong>Phone:</strong> {{ contact_info.phone }}</p>        
-        <p><strong>Email:</strong> {{ contact_info.email }}</p>        
-        <p><strong>Address:</strong> {{ contact_info.address }}</p>    
+    <form id="contactForm" action="" method="post">    
+        {% csrf_token %}        
+        <label for="name">Name:</label><br>    
+        <input type="text" id="name" name="name"><br><br> 
+
+        <label for="email">Email:</label><br>    
+        <input type="email" id="email" name="email"><br><br>        
+        
+        <label for="message">Message:</label><br>    
+        <textarea id="message" name="message"></textarea><br><br>        
+        
+        <button type="submit">Send</button>
+    </form>       
     </div>
+
+<script>    
+    document.getElementById("contactForm").addEventListener("submit", function(event) {        
+        let name = document.getElementById("name").value.trim();        
+        let email = document.getElementById("email").value.trim();       
+        
+        if (name === "" || email === "") {            
+            alert("Please fill in both Name and Email fields before submitting.");            
+            event.preventDefault(); // stop form from submitting        
+        }    
+    });
+</script>
 </body>
 </html>
