@@ -11,13 +11,14 @@ class Order(models.Model):
         ('CANCELLED', 'Cancelled'),
     ]
 
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
-    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='PENDING')
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Order #{self.id} by {self.customer.username}"
+    customer = models.ForeignKey("customers.Customer", on_delete=models.SET_NULL, null=True, blank=True)    
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)    
+    created_at = models.DateTimeField(auto_now_add=True)    
+    #  Add the foreign key for status    
+    status = models.ForeignKey(OrderStatus, on_delete=models.SET_NULL, null=True)    
+    
+    def __str__(self):        
+        return f"Order #{self.id} - {self.status.name if self.status else 'No Status'}"
 
 
 class OrderItem(models.Model):
