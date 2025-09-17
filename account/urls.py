@@ -3,4 +3,5 @@ from .views import *
 
 urlpatterns = [
     path('', views.home, name='home'),
+     path('api/', include('home.urls')),
 ]
