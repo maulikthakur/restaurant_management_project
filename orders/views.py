@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from .models import Order
+from .serializers import OrderHistorySerializer
 
-# Create your views here.
-from rest_framework.generics import ListAPIView
-from .models import MenuCategory
-from .serializers import MenuCategorySerializer
-
-class MenuCategoryListView(ListAPIView):    
-    queryset = MenuCategory.objects.all()    
-    serializer_class = MenuCategorySerializer
+class OrderHistoryView(APIView):    
+    permission_classes = [IsAuthenticated]    
+    
+    def get(self, request):        
+        orders = Order.objects.filter(user=request.user).order_by("-created_at")        
+        serializer = OrderHistorySerializer(orders, many=True)        
+        return Response(serializer.data)
